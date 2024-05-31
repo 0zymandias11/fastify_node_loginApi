@@ -56,5 +56,22 @@ module.exports = {
                 err,
             }
         }
+    },
+    query:async(req, res)=>{
+        try{
+            var userData = await userService.listAllUsers();
+            if(userData){
+                res.code(200);
+                return{
+                    message:"fetched all user detail successfully",
+                    data:{userData}
+                };
+            }
+        }catch(err){
+            return {
+                message: "couldn't fetch user list",
+                data: err
+            };
+        }
     }
 }

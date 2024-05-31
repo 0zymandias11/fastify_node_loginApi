@@ -22,6 +22,9 @@ module.exports = {
         data.password = bcrypt.hashSync(data.password, 10);
         return await User.create(data);
     },
+    listAllUsers: async()=>{
+        return await User.find({});
+    },
     comparePassword: async(userPassword, password)=>{
         const isCompared = bcrypt.compareSync(userPassword, password);
         return isCompared;
